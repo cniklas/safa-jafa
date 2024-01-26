@@ -12,4 +12,8 @@ export default defineConfig({
 			'@': fileURLToPath(new URL('./src', import.meta.url)),
 		},
 	},
+	// https://vitejs.dev/config/build-options.html#build-target
+	build: {
+		target: 'esnext',
+	},
 })
