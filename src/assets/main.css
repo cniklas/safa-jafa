@@ -9,8 +9,6 @@
 
 body {
 	color: theme('colors.dark.700');
-	min-height: 100vh;
-	min-height: 100dvh;
 }
 
 input[type='search']::-webkit-search-cancel-button,
@@ -53,12 +51,12 @@ td {
 	outline-offset: 2px;
 }
 
-.sf__table :is(th, td) {
+.sj__table :is(th, td) {
 	padding-block: 0.25rem;
 	padding-inline: 0.75rem;
 }
 
-.sf__table {
+.sj__table {
 	th {
 		text-align: start;
 		font-weight: 600;
