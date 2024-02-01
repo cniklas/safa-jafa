@@ -2,6 +2,12 @@
   "name": "safa-jafa",
   "version": "2.0.0",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cniklas/safa-jafa.git"
+  },
+  "author": "Christian Niklas",
+  "license": "MIT",
   "scripts": {
     "dev": "vite --open",
     "build": "run-p type-check \"build-only {@}\" --",

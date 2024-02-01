@@ -16,4 +16,8 @@ export default defineConfig({
 	build: {
 		target: 'esnext',
 	},
+	define: {
+		// https://stackoverflow.com/a/68093777/3870081
+		__BUILD_TIME__: JSON.stringify(new Date().getTime()),
+	},
 })
