@@ -45,7 +45,7 @@ td {
 }
 
 :any-link {
-	text-decoration: underline;
+	text-decoration-line: underline;
 }
 
 :focus-visible {

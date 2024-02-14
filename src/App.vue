@@ -3,7 +3,7 @@ import ListWords from '@/views/ListWords.vue'
 import { useStore } from '@/use/store'
 
 const { state, fetchEntries } = useStore()
-// fetchEntries(100)
+fetchEntries(100)
 
 const year = new Date().getFullYear()
 </script>
