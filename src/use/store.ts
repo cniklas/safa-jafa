@@ -58,9 +58,14 @@ const fetchEntries = async (limit = 0) => {
 	if (state.hasLoaded) return
 
 	try {
-		const { data, error, status } = limit > 0
-			? await supabase.from('words').select().range(0, limit - 1).order('hebrew', { ascending: true })
-			: await supabase.from('words').select()
+		const { data, error, status } =
+			limit > 0
+				? await supabase
+						.from('words')
+						.select()
+						.range(0, limit - 1)
+						.order('hebrew', { ascending: true })
+				: await supabase.from('words').select().order('hebrew', { ascending: true })
 		if (error) throw error
 		if (data === null) throw new Error('Verbindung zur Datenbank fehlgeschlagen.')
 

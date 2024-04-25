@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import AppLoader from '@/components/AppLoader.vue'
-import { useStore, stem, classification } from '@/use/store'
+import WordDialog from '@/components/WordDialog.vue'
+import { useStore, classification } from '@/use/store'
+import type { Word } from '@/types/Word.type'
 
 const { state, fetchEntries } = useStore()
 
@@ -39,11 +41,20 @@ onMounted(() => {
 onBeforeUnmount(() => {
 	_stopObserver()
 })
+
+const currentWord = ref<Word | undefined>()
+const dialogEl = ref<InstanceType<typeof WordDialog> | null>(null)
+const openDialog = (id: number) => {
+	currentWord.value = state.words.find(word => word.id === id)
+	if (!currentWord.value) return
+
+	dialogEl.value?.open()
+}
 </script>
 
 <template>
 	<div>
-		<table class="sj__table w-full">
+		<table class="word-table w-full">
 			<thead>
 				<tr>
 					<th>Hebräisch</th>
@@ -54,8 +65,27 @@ onBeforeUnmount(() => {
 			</thead>
 
 			<tbody>
-				<tr v-for="{ id, german, hebrew, pronunciation, classification_id } in state.words" :key="id">
-					<td lang="he">{{ hebrew }}</td>
+				<tr
+					v-for="{
+						id,
+						german,
+						hebrew,
+						pronunciation,
+						classification_id,
+						training_level,
+						no_training,
+						example,
+					} in state.words"
+					:key="id"
+				>
+					<td lang="he">
+						<button type="button" class="text-start" @click="openDialog(id)">
+							{{ hebrew ?? '—' }}
+						</button>
+						<template v-if="training_level === '6'"> ⭐️</template>
+						<template v-else-if="no_training"> 🚩</template>
+						<template v-if="example"> 💬</template>
+					</td>
 					<td lang="de">{{ german }}</td>
 					<td class="<sm:hidden">{{ pronunciation }}</td>
 					<td class="<md:hidden">{{ classification.get(classification_id) }}</td>
@@ -66,5 +96,7 @@ onBeforeUnmount(() => {
 		<div ref="loaderEl" class="mx-auto mt-4 w-7" :class="{ invisible: !isLoading, hidden: state.hasLoaded }">
 			<AppLoader class="aspect-1 w-7" width="28" height="28" />
 		</div>
+
+		<WordDialog ref="dialogEl" :word="currentWord" />
 	</div>
 </template>

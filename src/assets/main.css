@@ -1,3 +1,8 @@
+:root {
+	--base-size: 0.25rem;
+	--size-4: calc(4 * var(--base-size));
+}
+
 [lang] {
 	direction: ltr;
 	unicode-bidi: embed;
@@ -71,12 +76,12 @@ dialog {
 	outline-offset: 2px;
 }
 
-.sj__table :is(th, td) {
+.word-table :is(th, td) {
 	padding-block: 0.25rem;
 	padding-inline: 0.75rem;
 }
 
-.sj__table {
+.word-table {
 	th {
 		text-align: start;
 		font-weight: 600;
