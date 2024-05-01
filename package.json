@@ -28,7 +28,7 @@
     "@unocss/reset": "^0.59.0-beta.1",
     "@unocss/transformer-directives": "^0.59.0-beta.1",
     "@vitejs/plugin-vue": "^5.0.4",
-    "@vue/eslint-config-prettier": "^8.0.0",
+    "@vue/eslint-config-prettier": "^9.0.0",
     "@vue/eslint-config-typescript": "^12.0.0",
     "@vue/tsconfig": "^0.5.1",
     "eslint": "^8.49.0",
