@@ -24,7 +24,6 @@ const year = new Date().getFullYear()
 				href="https://github.com/cniklas/safa-jafa"
 				ping="https://cniklas.uber.space/backfeed-ep/cron/jobs/ncapkygazmxftqdhnmstdimn"
 				class="h-6 w-6"
-				rel="noopener"
 			>
 				<span class="sr-only">GitHub repo</span>
 				<svg aria-hidden="true" class="h-6 w-6 fill-current" viewBox="0 0 16 16" width="24" height="24">
