@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.44.2",
-    "vue": "^3.4.31"
+    "vue": "^3.4.35"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.10.3",
