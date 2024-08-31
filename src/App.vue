@@ -20,12 +20,7 @@ const year = new Date().getFullYear()
 		<footer class="top-100vh sticky mx-auto flex max-w-5xl items-center justify-center gap-x-3 px-4 py-5 text-sm">
 			<div>© 2013 - {{ year }} Christian Niklas</div>
 
-			<a
-				href="https://github.com/cniklas/safa-jafa"
-				ping="https://cniklas.uber.space/backfeed-ep/cron/jobs/ncapkygazmxftqdhnmstdimn"
-				class="h-6 w-6"
-				rel="noopener"
-			>
+			<a href="https://github.com/cniklas/safa-jafa" class="h-6 w-6" rel="noopener">
 				<span class="sr-only">GitHub repo</span>
 				<svg aria-hidden="true" class="h-6 w-6 fill-current" viewBox="0 0 16 16" width="24" height="24">
 					<path
