@@ -15,7 +15,7 @@ const fetchWords = () => {
 	}
 }
 
-const loaderEl = useTemplateRef<HTMLDivElement | null>('loader')
+const loaderEl = useTemplateRef<HTMLDivElement | null>('loaderEl')
 let observer: IntersectionObserver | null = null
 const _startObserver = () => {
 	if (!loaderEl.value) return
@@ -43,7 +43,7 @@ onBeforeUnmount(() => {
 })
 
 const currentWord = ref<Word | undefined>()
-const dialogEl = useTemplateRef<InstanceType<typeof WordDialog> | null>('dialog')
+const dialogEl = useTemplateRef<InstanceType<typeof WordDialog> | null>('dialogEl')
 const openDialog = (id: number) => {
 	currentWord.value = state.words.find(word => word.id === id)
 	if (!currentWord.value) return
@@ -93,10 +93,10 @@ const openDialog = (id: number) => {
 			</tbody>
 		</table>
 
-		<div ref="loader" class="mx-auto mt-4 w-7" :class="{ invisible: !isLoading, hidden: state.hasLoaded }">
+		<div ref="loaderEl" class="mx-auto mt-4 w-7" :class="{ invisible: !isLoading, hidden: state.hasLoaded }">
 			<AppLoader class="aspect-1 w-7" width="28" height="28" />
 		</div>
 
-		<WordDialog ref="dialog" :word="currentWord" />
+		<WordDialog ref="dialogEl" :word="currentWord" />
 	</div>
 </template>

@@ -5,7 +5,7 @@ import type { Word } from '@/types/Word.type'
 
 defineProps<{ word?: Word }>()
 
-const dialogEl = useTemplateRef<HTMLDialogElement | null>('dialog')
+const dialogEl = useTemplateRef<HTMLDialogElement | null>('dialogEl')
 const open = () => {
 	dialogEl.value?.showModal()
 }
@@ -14,7 +14,7 @@ defineExpose({ open })
 </script>
 
 <template>
-	<dialog ref="dialog" class="word-dialog w-md">
+	<dialog ref="dialogEl" class="word-dialog w-md">
 		<button type="button" @click="dialogEl?.close()">close</button>
 
 		<template v-if="word">
