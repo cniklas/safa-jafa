@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, useTemplateRef, onMounted, onBeforeUnmount } from 'vue'
 import AppLoader from '@/components/AppLoader.vue'
 import WordDialog from '@/components/WordDialog.vue'
 import { useStore, classification } from '@/use/store'
@@ -15,7 +15,7 @@ const fetchWords = () => {
 	}
 }
 
-const loaderEl = ref(null)
+const loaderEl = useTemplateRef<HTMLDivElement | null>('loader')
 let observer: IntersectionObserver | null = null
 const _startObserver = () => {
 	if (!loaderEl.value) return
@@ -43,7 +43,7 @@ onBeforeUnmount(() => {
 })
 
 const currentWord = ref<Word | undefined>()
-const dialogEl = ref<InstanceType<typeof WordDialog> | null>(null)
+const dialogEl = useTemplateRef<InstanceType<typeof WordDialog> | null>('dialog')
 const openDialog = (id: number) => {
 	currentWord.value = state.words.find(word => word.id === id)
 	if (!currentWord.value) return
@@ -93,10 +93,10 @@ const openDialog = (id: number) => {
 			</tbody>
 		</table>
 
-		<div ref="loaderEl" class="mx-auto mt-4 w-7" :class="{ invisible: !isLoading, hidden: state.hasLoaded }">
+		<div ref="loader" class="mx-auto mt-4 w-7" :class="{ invisible: !isLoading, hidden: state.hasLoaded }">
 			<AppLoader class="aspect-1 w-7" width="28" height="28" />
 		</div>
 
-		<WordDialog ref="dialogEl" :word="currentWord" />
+		<WordDialog ref="dialog" :word="currentWord" />
 	</div>
 </template>

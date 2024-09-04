@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { useTemplateRef } from 'vue'
 import { stem, classification } from '@/use/store'
 import type { Word } from '@/types/Word.type'
 
 defineProps<{ word?: Word }>()
 
-const dialogEl = ref<HTMLDialogElement | null>(null)
+const dialogEl = useTemplateRef<HTMLDialogElement | null>('dialog')
 const open = () => {
 	dialogEl.value?.showModal()
 }
@@ -14,7 +14,7 @@ defineExpose({ open })
 </script>
 
 <template>
-	<dialog ref="dialogEl" class="word-dialog w-md">
+	<dialog ref="dialog" class="word-dialog w-md">
 		<button type="button" @click="dialogEl?.close()">close</button>
 
 		<template v-if="word">
