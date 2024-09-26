@@ -11,8 +11,8 @@ const year = new Date().getFullYear()
 <template>
 	<main class="grid place-content-center py-5">
 		<div class="max-w-5xl px-4">
-			<div v-show="!state.words.length">Lade Daten …</div>
-			<ListWords v-show="state.words.length" />
+			<div v-if="!state.words.length">Lade Daten …</div>
+			<ListWords v-else />
 		</div>
 	</main>
 
